@@ -54,6 +54,18 @@ const addPoint = player => {
         playerTwoScore += 1;
         twoScore.innerHTML = playerTwoScore;
     }
+
+    let server_check = (playerOneScore + playerTwoScore - 1) % 2;
+    if (server_check === 0) {
+        if (serverOne.innerHTML === "•") {
+            serverOne.innerHTML = "";
+            serverTwo.innerHTML = "•";
+        }
+        else {
+            serverTwo.innerHTML = "";
+            serverOne.innerHTML = "•";
+        }
+    }
 };
 
 form.addEventListener("submit", e => {
