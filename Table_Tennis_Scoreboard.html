@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewpoint" content="width=divice-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
+    <link rel="icon" href="Table_Tennis_Small_Logo.PNG">
+    <title>Table Tennis Scoreboard</title>
+    <style>
+        /*  Setup Screen & Main Things */
+
+        body {
+            font-family: Trebuchet MS; 
+            font-weight: normal;
+            color: white;
+            text-align: center;
+            background-color: #222;
+        }
+        h1, h2 {
+            color: red;
+        }
+        input, select {
+            display: block;
+            margin: 10px auto;
+            padding: 4px;
+            font-family: Trebuchet MS; 
+            font-weight: normal;
+        }
+        .submitinfo {
+            width: 150px;
+            background: #111;
+            color: white;
+            padding: 10px;
+            margin: 20px auto;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            font-family: Trebuchet MS; 
+            cursor: pointer;
+            display: block;
+        }
+        .starter {
+            font-family: Trebuchet MS; 
+            font-weight: normal;
+            color: white;
+            text-align: center;
+            background-color: #222;
+            visibility: visible;
+        }
+
+        /* Game Screen */
+
+        .game {
+            position: absolute; 
+            top: 0px; 
+            left: 600px;
+            font-family: Trebuchet MS; 
+            font-weight: normal;
+            color: white;
+            text-align: center;
+            background-color: #222;
+            visibility: hidden;
+        }
+        .vl {
+            border-left: 10px solid white;
+            height: 750px;
+            position: absolute;
+            left: 50%;
+            margin-left: -3px;
+            top: 75px;
+        }
+        .playeroneinfo {
+            text-align: left;
+            float: left;
+        }
+        .playeronescore {
+            color: red;
+            font-size: 100px;
+        }
+        .playeronename {
+            color: white;
+            font-size: 40px;
+        }
+        .addpointone {
+            width: 100px;
+            background: red;
+            color: white;
+            padding: 10px;
+            margin: 20px auto;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            font-family: Trebuchet MS; 
+            cursor: pointer;
+            display: block;
+        }
+        .playeronegames {
+            color: white;
+            font-size: 50px;
+        }
+        .playertwoinfo {
+            text-align: right;
+            float: right;
+        }
+        .playertwoscore {
+            color: blue;
+            font-size: 100px;
+        }
+        .playertwoname {
+            color: white;
+            font-size: 40px;
+        }
+        .addpointtwo {
+            width: 100px;
+            background: blue;
+            color: white;
+            padding: 10px;
+            margin: 20px auto;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            font-family: Trebuchet MS; 
+            cursor: pointer;
+            display: block;
+        }
+        .playertwogames {
+            color: white;
+            font-size: 50px;
+        }
+        .serverOne, .serverTwo {
+            color: white;
+            font-size: 50px;
+        }
+
+        /* Tooltip */
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            color: red;
+            border-bottom: 1px dotted red;
+            cursor: help;
+        }
+        .tip {
+            visibility: hidden;
+            width: 150px;
+            background-color: red;
+            color: white;
+            text-align: center;
+            border-radius: 10px;
+            padding: 5px 0;
+            position: absolute;
+            bottom: 120%;
+            left: 50%;
+            margin-left: -75px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .tip.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .tip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -4px;
+            border-width: 4px;
+            border-style: solid;
+            border-color: transparent;
+            border-top-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="starter">
+        <h1 class="start-title">Table Tennis Scoreboard</h1>
+
+        <img src="Table_Tennis_Logo.PNG" style="height: 250px; width: 350px;" class="table-tennis-img">
+
+        <p class="instructions">Use this <span class="tooltip" data-message="Table tennis, also known as ping-pong and whiff-whaff, is a sport in which two or four players hit a lightweight ball, also known as the ping-pong ball, back and forth across a table using small rackets. The game takes place on a hard table divided by a net.">table tennis</span> scoreboard to keep score and focus on the more fun part - <i>playing</i> table tennis!</p>
+        
+        <hr>
+
+        <h2 class="setup-title">Setting Up...</h2>
+
+        <form class="setupform">
+            <input type="text" id="onename" name="onename" value="Player 1" placeholder="Player 1 Name" required>
+            <input type="text" id="twoname" name="twoname" value="Player 2" placeholder="Player 2 Name" required>
+
+            <br>
+
+            <label for="bestof">Best of...</label>
+            <select name="bestof" id="bestof">
+                <option value="one">1</option>
+                <option value="three">3</option>
+                <option value="five">5</option>
+                <option value="seven">7</option>
+            </select>
+
+            <br>
+
+            <label for="service">Server...</label>
+            <select name="service" id="service">
+                <option value="playerone">Player 1</option>
+                <option value="playertwo">Player 2</option>
+            </select>
+
+            <br>
+
+            <input type="submit" value="Let's Play!" class="submitinfo">
+        </form>
+    </div>
+
+    <div class="game">
+        <h1>Table Tennis Scoreboard - Game</h1>
+
+        <div class="playeroneinfo">
+            <span class="playeronename"></span>
+
+            <br><br><br>
+
+            <strong class="playeronescore">0</strong>
+
+            <br><br><br>
+
+            <button class="addpointone" onclick="addPoint('one')">Add Point</button>
+
+            <br><br><br>
+
+            <span class="serverOne"></span>
+
+            <br><br><br>
+
+            <span class="playeronegames">0</span>
+        </div>
+
+        <div class="vl"></div>
+
+        <div class="playertwoinfo">
+            <span class="playertwoname"></span>
+
+            <br><br><br>
+
+            <strong class="playertwoscore">0</strong>
+
+            <br><br><br>
+
+            <button class="addpointtwo" onclick="addPoint('two')">Add Point</button>
+
+            <br><br><br>
+
+            <span class="serverTwo"></span>
+                        
+            <br><br><br>
+
+            <span class="playertwogames">0</span>
+        </div>
+    </div>
+
+    <script src="Table_Tennis_Scoreboard.js"></script>
+</body>
+</html>
