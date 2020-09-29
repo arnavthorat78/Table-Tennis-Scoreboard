@@ -41,10 +41,6 @@ const serverTwo = document.querySelector(".serverTwo");
 let playerOneScore = 0;
 let playerTwoScore = 0;
 
-const isEven = num => {
-    return num % 2 == 0;
-}
-
 const addPoint = player => {
     if (player === "one") {
         playerOneScore += 1;
@@ -55,8 +51,9 @@ const addPoint = player => {
         twoScore.innerHTML = playerTwoScore;
     }
 
-    let server_check = (playerOneScore + playerTwoScore - 1) % 2;
-    if (server_check === 0) {
+    let serverCheck = (playerOneScore + playerTwoScore - 1) % 2; // 0 + 0 - 1 % 2
+    console.log(serverCheck);
+    if (serverCheck === 0) {
         if (serverOne.innerHTML === "•") {
             serverOne.innerHTML = "";
             serverTwo.innerHTML = "•";
