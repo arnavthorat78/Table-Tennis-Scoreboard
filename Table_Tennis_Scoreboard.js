@@ -49,10 +49,17 @@ const addPoint = player => {
     else if (player === "two") {
         playerTwoScore += 1;
         twoScore.innerHTML = playerTwoScore;
+    }  
+    
+    if (serverOne.innerHTML === "•") {
+        serverOne.innerHTML = "";
+        serverTwo.innerHTML = "•";
     }
-
+    else {
+        serverTwo.innerHTML = "";
+        serverOne.innerHTML = "•";
+    }
     let serverCheck = (playerOneScore + playerTwoScore - 1) % 2; // 0 + 0 - 1 % 2
-    console.log(serverCheck);
     if (serverCheck === 0) {
         if (serverOne.innerHTML === "•") {
             serverOne.innerHTML = "";
