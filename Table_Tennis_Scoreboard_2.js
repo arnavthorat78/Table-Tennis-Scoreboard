@@ -220,6 +220,18 @@ const subtractPoint = player => {
         playerTwoScore -= 1;
         twoScore.innerHTML = playerTwoScore; 
     }
+
+    let serverCheck = (playerOneScore + playerTwoScore - 2) % 2;
+    if (serverCheck === 0) {
+        if (serverOne.innerHTML === "•") {
+            serverOne.innerHTML = "";
+            serverTwo.innerHTML = "•";
+        }
+        else {
+            serverTwo.innerHTML = "";
+            serverOne.innerHTML = "•";
+        }
+    }
 };
 
 form.addEventListener("submit", e => {
