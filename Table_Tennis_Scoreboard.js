@@ -222,14 +222,28 @@ const subtractPoint = player => {
     }
 
     let serverCheck = (playerOneScore + playerTwoScore - 2) % 2;
-    if (serverCheck === 0) {
-        if (serverOne.innerHTML === "•") {
-            serverOne.innerHTML = "";
-            serverTwo.innerHTML = "•";
+    if (player === "one" && playerOneScore !== 0) {
+        if (serverCheck === 0) {
+            if (serverOne.innerHTML === "•") {
+                serverOne.innerHTML = "";
+                serverTwo.innerHTML = "•";
+            }
+            else {
+                serverTwo.innerHTML = "";
+                serverOne.innerHTML = "•";
+            }
         }
-        else {
-            serverTwo.innerHTML = "";
-            serverOne.innerHTML = "•";
+    }
+    if (player === "two" && playerTwoScore !== 0) {
+        if (serverCheck === 0) {
+            if (serverOne.innerHTML === "•") {
+                serverOne.innerHTML = "";
+                serverTwo.innerHTML = "•";
+            }
+            else {
+                serverTwo.innerHTML = "";
+                serverOne.innerHTML = "•";
+            }
         }
     }
 };
