@@ -69,6 +69,7 @@ const addPoint = player => {
     if (playerOneScore >= 11 && playerOneScore - playerTwoScore >= 2) {
         playerOneWins += 1;
         playerOneScore = 0;
+        playerTwoScore = 0;
         oneScore.innerHTML = playerOneScore;
         oneGames.innerHTML = playerOneWins;
         console.log(form.bestof.value);
@@ -92,6 +93,7 @@ const addPoint = player => {
     }
     if (playerTwoScore >= 11 && playerTwoScore - playerOneScore >= 2) {
         playerTwoWins += 1;
+        playerOneScore = 0;
         playerTwoScore = 0;
         twoScore.innerHTML = playerTwoScore;
         twoGames.innerHTML = playerTwoWins;
