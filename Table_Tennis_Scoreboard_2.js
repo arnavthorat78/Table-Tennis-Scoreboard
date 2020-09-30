@@ -45,13 +45,10 @@ const addPoint = player => {
     if (player === "one") {
         playerOneScore += 1;
         oneScore.innerHTML = playerOneScore;
-        
-        
     }
     else if (player === "two") {
         playerTwoScore += 1;
         twoScore.innerHTML = playerTwoScore;
-        
     }  
     
     if (serverOne.innerHTML === "•") {
@@ -63,15 +60,14 @@ const addPoint = player => {
         serverOne.innerHTML = "•";
     }
     if (playerOneScore >= 11 && playerOneScore - playerTwoScore >= 2) {
-        alert ("WINNER IS: " + form.onename.value);
+        alert ("The winner is " + form.onename.value + "! Well done!");
         location.reload();
     }
     if (playerTwoScore >= 11 && playerTwoScore - playerOneScore >= 2) {
-        alert ("WINNER IS: " + form.twoname.value);
+        alert ("The winner is " + form.twoname.value + "! Well done!");
         location.reload();
     }
-    if (playerOneScore === 10 && playerTwoScore === 10)
-    {
+    if (playerOneScore === 10 && playerTwoScore === 10) {
         alert("Tiebreaker active!");
         let serverCheck = (playerOneScore + playerTwoScore - 1) % 2; // 0 + 0 - 1 % 2
         if (serverCheck === 0) {
@@ -83,13 +79,10 @@ const addPoint = player => {
                 serverTwo.innerHTML = "";
                 serverOne.innerHTML = "•";
             }
-            if (playerOneScore - playerTwoScore <= 1 || playerTwoScore - playerOneScore <= 1)
-            {
-                console.log (playerOneScore - playerTwoScore);
-                console.log(playerTwoScore - playerOneScore);
+            if (playerOneScore - playerTwoScore <= 1 || playerTwoScore - playerOneScore <= 1) {
                 alert("Game over!");
             }
-    }
+        }
     }
     let serverCheck = (playerOneScore + playerTwoScore - 1) % 2; // 0 + 0 - 1 % 2
     if (serverCheck === 0) {
