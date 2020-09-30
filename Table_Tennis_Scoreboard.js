@@ -62,11 +62,11 @@ const addPoint = player => {
         serverTwo.innerHTML = "";
         serverOne.innerHTML = "•";
     }
-    if (playerOneScore >= 11 && playerOneScore - playerTwoScore >= 2) {
+    if (playerOneScore >= 10 && playerOneScore - playerTwoScore >= 2) {
         alert ("WINNER IS: " + form.onename.value);
         location.reload();
     }
-    if (playerTwoScore >= 11 && playerTwoScore - playerOneScore >= 2) {
+    if (playerTwoScore >= 10 && playerTwoScore - playerOneScore >= 2) {
         alert ("WINNER IS: " + form.twoname.value);
         location.reload();
     }
