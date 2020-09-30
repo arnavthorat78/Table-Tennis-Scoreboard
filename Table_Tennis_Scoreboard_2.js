@@ -39,6 +39,8 @@ const serverOne = document.querySelector(".serverOne");
 const serverTwo = document.querySelector(".serverTwo");
 const addScoreOne = document.querySelector(".addpointone");
 const addScoreTwo = document.querySelector(".addpointtwo");
+const backScoreTwo = document.querySelector(".backpointone");
+const backScoreOne = document.querySelector(".backpointtwo");
 const oneGames = document.querySelector(".playeronegames");
 const twoGames = document.querySelector(".playertwogames");
 
@@ -76,21 +78,52 @@ const addPoint = player => {
         console.log(form.bestof.value);
         if (form.bestof.value === "one" && playerOneWins >= 1) {
             alert ("The winner of this game is " + form.onename.value + "! Well done!");
+            addScoreOne.disabled = true;
+            addScoreTwo.disabled = true;
+            backScoreOne.disabled = true;
+            backScoreTwo.disabled = true;
+            addScoreOne.style.cursor = "not-allowed";
+            addScoreTwo.style.cursor = "not-allowed";
+            backScoreOne.style.cursor = "not-allowed";
+            backScoreTwo.style.cursor = "not-allowed";
             setTimeout(() => {location.reload()}, 5000);
         }
         else if (form.bestof.value === "three" && playerOneWins === 2) {
             alert ("The winner of these games is " + form.onename.value + "! Well done!");
+            addScoreOne.disabled = true;
+            addScoreTwo.disabled = true;
+            backScoreOne.disabled = true;
+            backScoreTwo.disabled = true;
+            addScoreOne.style.cursor = "not-allowed";
+            addScoreTwo.style.cursor = "not-allowed";
+            backScoreOne.style.cursor = "not-allowed";
+            backScoreTwo.style.cursor = "not-allowed";
             setTimeout(() => {location.reload()}, 5000);
         }
         else if (form.bestof.value === "five" && playerOneWins === 3) {
             alert ("The winner of these games is " + form.onename.value + "! Well done!");
+            addScoreOne.disabled = true;
+            addScoreTwo.disabled = true;
+            backScoreOne.disabled = true;
+            backScoreTwo.disabled = true;
+            addScoreOne.style.cursor = "not-allowed";
+            addScoreTwo.style.cursor = "not-allowed";
+            backScoreOne.style.cursor = "not-allowed";
+            backScoreTwo.style.cursor = "not-allowed";
             setTimeout(() => {location.reload()}, 5000);
         }
         else if (form.bestof.value === "seven" && playerOneWins === 4) {
             alert ("The winner of these games is " + form.onename.value + "! Well done!");
+            addScoreOne.disabled = true;
+            addScoreTwo.disabled = true;
+            backScoreOne.disabled = true;
+            backScoreTwo.disabled = true;
+            addScoreOne.style.cursor = "not-allowed";
+            addScoreTwo.style.cursor = "not-allowed";
+            backScoreOne.style.cursor = "not-allowed";
+            backScoreTwo.style.cursor = "not-allowed";
             setTimeout(() => {location.reload()}, 5000);
         }
-        //location.reload();
     }
     if (playerTwoScore >= 11 && playerTwoScore - playerOneScore >= 2) {
         playerTwoWins += 1;
@@ -101,25 +134,56 @@ const addPoint = player => {
         twoGames.innerHTML = playerTwoWins;
         if (form.bestof.value === "one" && playerTwoWins >= 1) {
             alert ("The winner of this game is " + form.twoname.value + "! Well done!");
+            addScoreOne.disabled = true;
+            addScoreTwo.disabled = true;
+            backScoreOne.disabled = true;
+            backScoreTwo.disabled = true;
+            addScoreOne.style.cursor = "not-allowed";
+            addScoreTwo.style.cursor = "not-allowed";
+            backScoreOne.style.cursor = "not-allowed";
+            backScoreTwo.style.cursor = "not-allowed";
             setTimeout(() => {location.reload()}, 5000);
         }
         else if (form.bestof.value === "three" && playerTwoWins === 2) {
             alert ("The winner of these games is " + form.twoname.value + "! Well done!");
+            addScoreOne.disabled = true;
+            addScoreTwo.disabled = true;
+            backScoreOne.disabled = true;
+            backScoreTwo.disabled = true;
+            addScoreOne.style.cursor = "not-allowed";
+            addScoreTwo.style.cursor = "not-allowed";
+            backScoreOne.style.cursor = "not-allowed";
+            backScoreTwo.style.cursor = "not-allowed";
             setTimeout(() => {location.reload()}, 5000);
         }
         else if (form.bestof.value === "five" && playerTwoWins === 3) {
             alert ("The winner of these games is " + form.twoname.value + "! Well done!");
+            addScoreOne.disabled = true;
+            addScoreTwo.disabled = true;
+            backScoreOne.disabled = true;
+            backScoreTwo.disabled = true;
+            addScoreOne.style.cursor = "not-allowed";
+            addScoreTwo.style.cursor = "not-allowed";
+            backScoreOne.style.cursor = "not-allowed";
+            backScoreTwo.style.cursor = "not-allowed";
             setTimeout(() => {location.reload()}, 5000);
         }
         else if (form.bestof.value === "seven" && playerTwoWins === 4) {
             alert ("The winner of these games is " + form.twoname.value + "! Well done!");
+            addScoreOne.disabled = true;
+            addScoreTwo.disabled = true;
+            backScoreOne.disabled = true;
+            backScoreTwo.disabled = true;
+            addScoreOne.style.cursor = "not-allowed";
+            addScoreTwo.style.cursor = "not-allowed";
+            backScoreOne.style.cursor = "not-allowed";
+            backScoreTwo.style.cursor = "not-allowed";
             setTimeout(() => {location.reload()}, 5000);
         }
-        //location.reload();
     }
     if (playerOneScore === 10 && playerTwoScore === 10) {
         alert("Tiebreaker active!");
-        let serverCheck = (playerOneScore + playerTwoScore - 1) % 2; // 0 + 0 - 1 % 2
+        let serverCheck = (playerOneScore + playerTwoScore - 1) % 2;
         if (serverCheck === 0) {
             if (serverOne.innerHTML === "•") {
                 serverOne.innerHTML = "";
@@ -134,7 +198,7 @@ const addPoint = player => {
             }
         }
     }
-    let serverCheck = (playerOneScore + playerTwoScore - 1) % 2; // 0 + 0 - 1 % 2
+    let serverCheck = (playerOneScore + playerTwoScore - 1) % 2;
     if (serverCheck === 0) {
         if (serverOne.innerHTML === "•") {
             serverOne.innerHTML = "";
