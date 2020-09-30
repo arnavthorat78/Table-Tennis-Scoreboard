@@ -131,7 +131,20 @@
         }
         .serverOne, .serverTwo {
             color: goldenrod;
-            font-size: 50px;
+            font-size: 100px;
+        }
+        .backpointone, .backpointtwo {
+            width: 100px;
+            background: #111;
+            color: white;
+            padding: 10px;
+            margin: 20px auto;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            font-family: Trebuchet MS; 
+            cursor: pointer;
+            display: block;
         }
 
         /* Tooltip */
@@ -249,11 +262,12 @@
 
             <br><br><br>
 
-            <strong class="playeronescore">0</strong>
+            <span class="playeronescore">0</span>
 
             <br><br><br>
 
             <button class="addpointone" onclick="addPoint('one')">Add Point</button>
+            <button class="backpointone" onclick="subtractPoint('one')">Subtract Point</button>
 
             <br><br><br>
 
@@ -271,11 +285,12 @@
 
             <br><br><br>
 
-            <strong class="playertwoscore">0</strong>
+            <span class="playertwoscore">0</span>
 
             <br><br><br>
 
             <button class="addpointtwo" onclick="addPoint('two')">Add Point</button>
+            <button class="backpointtwo" onclick="subtractPoint('two')">Subtract Point</button>
 
             <br><br><br>
 

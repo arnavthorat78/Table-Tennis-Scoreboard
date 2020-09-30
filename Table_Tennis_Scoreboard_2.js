@@ -71,6 +71,7 @@ const addPoint = player => {
         playerOneScore = 0;
         playerTwoScore = 0;
         oneScore.innerHTML = playerOneScore;
+        twoScore.innerHTML = playerTwoScore;
         oneGames.innerHTML = playerOneWins;
         console.log(form.bestof.value);
         if (form.bestof.value === "one" && playerOneWins >= 1) {
@@ -95,6 +96,7 @@ const addPoint = player => {
         playerTwoWins += 1;
         playerOneScore = 0;
         playerTwoScore = 0;
+        oneScore.innerHTML = playerOneScore;
         twoScore.innerHTML = playerTwoScore;
         twoGames.innerHTML = playerTwoWins;
         if (form.bestof.value === "one" && playerTwoWins >= 1) {
@@ -143,7 +145,17 @@ const addPoint = player => {
             serverOne.innerHTML = "•";
         }
     }
-  
+};
+
+const subtractPoint = player => {
+    if (player === "one" && playerOneScore !== 0) {
+        playerOneScore -= 1;
+        oneScore.innerHTML = playerOneScore;
+    }
+    else if (player === "two" && playerTwoScore !== 0) {
+        playerTwoScore -= 1;
+        twoScore.innerHTML = playerTwoScore; 
+    }
 };
 
 form.addEventListener("submit", e => {
