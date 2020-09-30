@@ -19,9 +19,9 @@
             background-color: #222;
         }
         h1, h2 {
-            color: red;
+            color: orange;
         }
-        input, select {
+        input, select, option {
             display: block;
             margin: 10px auto;
             padding: 4px;
@@ -190,6 +190,32 @@
         <form class="setupform">
             <input type="text" id="onename" name="onename" value="Player 1" placeholder="Player 1 Name" required>
             <input type="text" id="twoname" name="twoname" value="Player 2" placeholder="Player 2 Name" required>
+
+            <br>
+
+            <label for="onecolour">Player 1 colour...</label>
+            <select name="onecolour" id="onecolour">
+                <option value="red" selected>Red</option>
+                <option value="orange">Orange</option>
+                <option value="yellow">Yellow</option>
+                <option value="green">Green</option>
+                <option value="cyan">Cyan</option>
+                <option value="blue">Blue</option>
+                <option value="purple">Purple</option>
+                <option value="pink">Pink</option>
+            </select>
+
+            <label for="twocolour">Player 2 colour...</label>
+            <select name="twocolour" id="twocolour">
+                <option value="red">Red</option>
+                <option value="orange">Orange</option>
+                <option value="yellow">Yellow</option>
+                <option value="green">Green</option>
+                <option value="cyan">Cyan</option>
+                <option value="blue" selected>Blue</option>
+                <option value="purple">Purple</option>
+                <option value="pink">Pink</option>
+            </select>
 
             <br>
 

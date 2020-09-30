@@ -37,6 +37,8 @@ const oneName = document.querySelector(".playeronename");
 const twoName = document.querySelector(".playertwoname");
 const serverOne = document.querySelector(".serverOne");
 const serverTwo = document.querySelector(".serverTwo");
+const addScoreOne = document.querySelector(".addpointone");
+const addScoreTwo = document.querySelector(".addpointtwo");
 
 let playerOneScore = 0;
 let playerTwoScore = 0;
@@ -104,6 +106,9 @@ form.addEventListener("submit", e => {
     const playerOneName = form.onename.value;
     const playerTwoName = form.twoname.value;
 
+    const playerOneColour = form.onecolour.value;
+    const playerTwoColour = form.twocolour.value;
+
     const bestOf = form.bestof.value;
     const server = form.service.value;
 
@@ -118,5 +123,16 @@ form.addEventListener("submit", e => {
     }
     else {
         serverTwo.innerHTML = "•";
+    }
+
+    oneScore.style.color = playerOneColour;
+    addScoreOne.style.background = playerOneColour;
+    if (playerOneColour === "yellow" || playerOneColour === "cyan" || playerOneColour === "pink") {
+        addScoreOne.style.color = "black";
+    }
+    twoScore.style.color = playerTwoColour;
+    addScoreTwo.style.background = playerTwoColour;
+    if (playerTwoColour === "yellow" || playerTwoColour === "cyan" || playerTwoColour === "pink") {
+        addScoreTwo.style.color = "black";
     }
 });
