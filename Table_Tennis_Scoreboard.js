@@ -47,29 +47,25 @@ const addPoint = player => {
         oneScore.innerHTML = playerOneScore;
         
         if (playerOneScore === 10) {
-                alert ("WINNER IS: " + form.onename.value);
-                location.reload();
-            }
-            if (playerTwoScore == 10)
-            {
-                alert ("WINNER IS: " + form.twoname.value);
-                location.reload();
-            }
+            alert("The winner is " + form.onename.value + "! Well done!");
+            location.reload();
+        }
+        if (playerTwoScore === 10) {
+            alert("The winner is " + form.twoname.value + "! Well done!");
+            location.reload();
+        }
     }
     else if (player === "two") {
         playerTwoScore += 1;
         twoScore.innerHTML = playerTwoScore;
-        console.log ("Player2", playerTwoScore);
-        if (playerOneScore == 10)
-            {
-                alert ("WINNER IS: " + form.onename.value);
-                location.reload();
-            }
-            if (playerTwoScore == 10)
-            {
-                alert ("WINNER IS: " + form.twoname.value);
-                location.reload();
-            }
+        if (playerOneScore === 10) {
+            alert("The winner is " + form.onename.value + "! Well done!");
+            location.reload();
+        }
+        if (playerTwoScore === 10) {
+            alert("The winner is " + form.twoname.value + "! Well done!");
+            location.reload();
+        }
     }  
     
     if (serverOne.innerHTML === "•") {
