@@ -46,30 +46,12 @@ const addPoint = player => {
         playerOneScore += 1;
         oneScore.innerHTML = playerOneScore;
         
-        if (playerOneScore === 10) {
-                alert ("WINNER IS: " + form.onename.value);
-                location.reload();
-            }
-            if (playerTwoScore == 10)
-            {
-                alert ("WINNER IS: " + form.twoname.value);
-                location.reload();
-            }
+        
     }
     else if (player === "two") {
         playerTwoScore += 1;
         twoScore.innerHTML = playerTwoScore;
-        console.log ("Player2", playerTwoScore);
-        if (playerOneScore == 10)
-            {
-                alert ("WINNER IS: " + form.onename.value);
-                location.reload();
-            }
-            if (playerTwoScore == 10)
-            {
-                alert ("WINNER IS: " + form.twoname.value);
-                location.reload();
-            }
+        
     }  
     
     if (serverOne.innerHTML === "•") {
@@ -79,6 +61,35 @@ const addPoint = player => {
     else {
         serverTwo.innerHTML = "";
         serverOne.innerHTML = "•";
+    }
+    if (playerOneScore >= 11 && playerOneScore - playerTwoScore >= 2) {
+        alert ("WINNER IS: " + form.onename.value);
+        location.reload();
+    }
+    if (playerTwoScore >= 11 && playerTwoScore - playerOneScore >= 2) {
+        alert ("WINNER IS: " + form.twoname.value);
+        location.reload();
+    }
+    if (playerOneScore === 10 && playerTwoScore === 10)
+    {
+        alert("Tiebreaker active!");
+        let serverCheck = (playerOneScore + playerTwoScore - 1) % 2; // 0 + 0 - 1 % 2
+        if (serverCheck === 0) {
+            if (serverOne.innerHTML === "•") {
+                serverOne.innerHTML = "";
+                serverTwo.innerHTML = "•";
+            }
+            else {
+                serverTwo.innerHTML = "";
+                serverOne.innerHTML = "•";
+            }
+            if (playerOneScore - playerTwoScore <= 1 || playerTwoScore - playerOneScore <= 1)
+            {
+                console.log (playerOneScore - playerTwoScore);
+                console.log(playerTwoScore - playerOneScore);
+                alert("Game over!");
+            }
+    }
     }
     let serverCheck = (playerOneScore + playerTwoScore - 1) % 2; // 0 + 0 - 1 % 2
     if (serverCheck === 0) {
