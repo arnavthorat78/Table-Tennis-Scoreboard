@@ -45,10 +45,31 @@ const addPoint = player => {
     if (player === "one") {
         playerOneScore += 1;
         oneScore.innerHTML = playerOneScore;
+        
+        if (playerOneScore === 10) {
+                alert ("WINNER IS: " + form.onename.value);
+                location.reload();
+            }
+            if (playerTwoScore == 10)
+            {
+                alert ("WINNER IS: " + form.twoname.value);
+                location.reload();
+            }
     }
     else if (player === "two") {
         playerTwoScore += 1;
         twoScore.innerHTML = playerTwoScore;
+        console.log ("Player2", playerTwoScore);
+        if (playerOneScore == 10)
+            {
+                alert ("WINNER IS: " + form.onename.value);
+                location.reload();
+            }
+            if (playerTwoScore == 10)
+            {
+                alert ("WINNER IS: " + form.twoname.value);
+                location.reload();
+            }
     }  
     
     if (serverOne.innerHTML === "•") {
@@ -70,6 +91,7 @@ const addPoint = player => {
             serverOne.innerHTML = "•";
         }
     }
+  
 };
 
 form.addEventListener("submit", e => {
