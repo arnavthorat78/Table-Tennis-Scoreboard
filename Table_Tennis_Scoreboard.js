@@ -25,10 +25,12 @@ const tooltip = new Tooltip(document.querySelector(".tooltip"));
 
 tooltip.init();
 
-// Getting form information.
+// Getting the starter information.
 
 const form = document.querySelector(".setupform");
 const startForm = document.querySelector(".starter");
+
+// Getting the game information.
 
 const game = document.querySelector(".game");
 const oneScore = document.querySelector(".playeronescore");
@@ -44,13 +46,19 @@ const backScoreOne = document.querySelector(".backpointtwo");
 const oneGames = document.querySelector(".playeronegames");
 const twoGames = document.querySelector(".playertwogames");
 
+// Setting global variables.
+
 let playerOneScore = 0;
 let playerTwoScore = 0;
 
 let playerOneWins = 0;
 let playerTwoWins = 0;
 
+// Defining addPoint(), responsible for adding the point.
+
 const addPoint = player => {
+    // Adding score.
+
     if (player === "one") {
         playerOneScore += 1;
         oneScore.innerHTML = playerOneScore;
@@ -58,7 +66,9 @@ const addPoint = player => {
     else if (player === "two") {
         playerTwoScore += 1;
         twoScore.innerHTML = playerTwoScore;
-    }  
+    }
+
+    // Changing server (1).
     
     if (serverOne.innerHTML === "•") {
         serverOne.innerHTML = "";
@@ -68,6 +78,9 @@ const addPoint = player => {
         serverTwo.innerHTML = "";
         serverOne.innerHTML = "•";
     }
+
+    // Tiebreaker.
+
     if (playerOneScore >= 11 && playerOneScore - playerTwoScore >= 2) {
         playerOneWins += 1;
         playerOneScore = 0;
@@ -181,6 +194,9 @@ const addPoint = player => {
             setTimeout(() => {location.reload()}, 5000);
         }
     }
+
+    // Server check (2).
+
     if (playerOneScore === 10 && playerTwoScore === 10) {
         alert("Tiebreaker active!");
         let serverCheck = (playerOneScore + playerTwoScore - 1) % 2;
@@ -198,6 +214,9 @@ const addPoint = player => {
             }
         }
     }
+
+    // Server check (3).
+
     let serverCheck = (playerOneScore + playerTwoScore - 1) % 2;
     if (serverCheck === 0) {
         if (serverOne.innerHTML === "•") {
@@ -212,6 +231,8 @@ const addPoint = player => {
 };
 
 const subtractPoint = player => {
+    // Subtract point.
+
     if (player === "one" && playerOneScore !== 0) {
         playerOneScore -= 1;
         oneScore.innerHTML = playerOneScore;
@@ -220,6 +241,8 @@ const subtractPoint = player => {
         playerTwoScore -= 1;
         twoScore.innerHTML = playerTwoScore; 
     }
+
+    // Change server.
 
     let serverCheck = (playerOneScore + playerTwoScore - 2) % 2;
     if (player === "one" && playerOneScore !== 0) {
@@ -256,8 +279,6 @@ form.addEventListener("submit", e => {
 
     const playerOneColour = form.onecolour.value;
     const playerTwoColour = form.twocolour.value;
-
-    const bestOf = form.bestof.value;
     const server = form.service.value;
 
     startForm.style.visibility = "hidden";
