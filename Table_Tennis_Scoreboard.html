@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie-edge">
     <title>Table Tennis Scoreboard</title>
     <style>
-        /*  Setup Screen & Main Things */
+        /* Main Tags */
 
         body {
             font-family: Trebuchet MS; 
@@ -19,6 +19,9 @@
         h1, h2 {
             color: orange;
         }
+
+        /* Setting up the "setting up" screen. */
+
         input, select, option {
             display: block;
             margin: 10px auto;
@@ -69,6 +72,7 @@
             margin-left: -3px;
             top: 75px;
         }
+        /* Player One Information Styles */
         .playeroneinfo {
             text-align: left;
             float: left;
@@ -98,6 +102,7 @@
             color: white;
             font-size: 50px;
         }
+        /* Player Two Information Styles. */
         .playertwoinfo {
             text-align: right;
             float: right;
@@ -145,7 +150,7 @@
             display: block;
         }
 
-        /* Tooltip */
+        /* Tooltip (Setting Up Screen) */
 
         .tooltip {
             position: relative;
@@ -187,6 +192,8 @@
     </style>
 </head>
 <body>
+    <!-- Setting up screen. -->
+
     <div class="starter">
         <h1 class="start-title">Table Tennis Scoreboard</h1>
 
@@ -198,11 +205,17 @@
 
         <h2 class="setup-title">Setting Up...</h2>
 
+        <!-- Form for setting up. -->
+
         <form class="setupform">
+            <!-- Player One & Player Two's name. -->
+
             <input type="text" id="onename" name="onename" value="Player 1" placeholder="Player 1 Name" required>
             <input type="text" id="twoname" name="twoname" value="Player 2" placeholder="Player 2 Name" required>
 
             <br>
+
+            <!-- Player's colour selection. -->
 
             <label for="onecolour">Player 1 colour...</label>
             <select name="onecolour" id="onecolour">
@@ -213,7 +226,7 @@
                 <option value="cyan">Cyan</option>
                 <option value="blue">Blue</option>
                 <option value="purple">Purple</option>
-                <option value="pink">Pink</option>
+                <option value="hotpink">Pink</option>
             </select>
 
             <label for="twocolour">Player 2 colour...</label>
@@ -225,10 +238,12 @@
                 <option value="cyan">Cyan</option>
                 <option value="blue" selected>Blue</option>
                 <option value="purple">Purple</option>
-                <option value="pink">Pink</option>
+                <option value="hotpink">Pink</option>
             </select>
 
             <br>
+
+            <!-- Best of & server. -->
 
             <label for="bestof">Best of...</label>
             <select name="bestof" id="bestof">
@@ -248,12 +263,18 @@
 
             <br>
 
+            <!-- Submit. -->
+
             <input type="submit" value="Let's Play!" class="submitinfo">
         </form>
     </div>
 
+    <!-- Game screen. -->
+
     <div class="game">
         <h1>Table Tennis Scoreboard - Game</h1>
+
+        <!-- Player One's information. -->
 
         <div class="playeroneinfo">
             <span class="playeronename"></span> <span class="serverOne"></span>
@@ -272,7 +293,11 @@
             <span class="playeronegames">0</span>
         </div>
 
+        <!-- Vertical line. -->
+
         <div class="vl"></div>
+
+        <!-- Player Two information. -->
 
         <div class="playertwoinfo">
             <span class="playertwoname"></span> <span class="serverTwo"></span>
@@ -291,6 +316,8 @@
             <span class="playertwogames">0</span>
         </div>
     </div>
+
+    <!-- Getting the JavaScript file. -->
 
     <script src="Table_Tennis_Scoreboard.js"></script>
 </body>

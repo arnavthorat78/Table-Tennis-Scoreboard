@@ -91,14 +91,14 @@ const addPoint = player => {
         console.log(form.bestof.value);
         if (form.bestof.value === "one" && playerOneWins >= 1) {
             alert ("The winner of this game is " + form.onename.value + "! Well done!");
-            addScoreOne.disabled = true;
-            addScoreTwo.disabled = true;
-            backScoreOne.disabled = true;
-            backScoreTwo.disabled = true;
-            addScoreOne.style.cursor = "not-allowed";
-            addScoreTwo.style.cursor = "not-allowed";
-            backScoreOne.style.cursor = "not-allowed";
-            backScoreTwo.style.cursor = "not-allowed";
+            addScoreOne.disabled = true;                // ---
+            addScoreTwo.disabled = true;                //    |
+            backScoreOne.disabled = true;               //    |
+            backScoreTwo.disabled = true;               //    | --- Making the "Add Point" & "Subtract Point"
+            addScoreOne.style.cursor = "not-allowed";   //    | --- disabled, and adding styles to it as well.*
+            addScoreTwo.style.cursor = "not-allowed";   //    |
+            backScoreOne.style.cursor = "not-allowed";  //    |
+            backScoreTwo.style.cursor = "not-allowed";  // ---
             setTimeout(() => {location.reload()}, 5000);
         }
         else if (form.bestof.value === "three" && playerOneWins === 2) {
@@ -107,7 +107,7 @@ const addPoint = player => {
             addScoreTwo.disabled = true;
             backScoreOne.disabled = true;
             backScoreTwo.disabled = true;
-            addScoreOne.style.cursor = "not-allowed";
+            addScoreOne.style.cursor = "not-allowed"; // *
             addScoreTwo.style.cursor = "not-allowed";
             backScoreOne.style.cursor = "not-allowed";
             backScoreTwo.style.cursor = "not-allowed";
@@ -119,7 +119,7 @@ const addPoint = player => {
             addScoreTwo.disabled = true;
             backScoreOne.disabled = true;
             backScoreTwo.disabled = true;
-            addScoreOne.style.cursor = "not-allowed";
+            addScoreOne.style.cursor = "not-allowed"; // *
             addScoreTwo.style.cursor = "not-allowed";
             backScoreOne.style.cursor = "not-allowed";
             backScoreTwo.style.cursor = "not-allowed";
@@ -131,7 +131,7 @@ const addPoint = player => {
             addScoreTwo.disabled = true;
             backScoreOne.disabled = true;
             backScoreTwo.disabled = true;
-            addScoreOne.style.cursor = "not-allowed";
+            addScoreOne.style.cursor = "not-allowed"; // *
             addScoreTwo.style.cursor = "not-allowed";
             backScoreOne.style.cursor = "not-allowed";
             backScoreTwo.style.cursor = "not-allowed";
@@ -151,7 +151,7 @@ const addPoint = player => {
             addScoreTwo.disabled = true;
             backScoreOne.disabled = true;
             backScoreTwo.disabled = true;
-            addScoreOne.style.cursor = "not-allowed";
+            addScoreOne.style.cursor = "not-allowed"; // *
             addScoreTwo.style.cursor = "not-allowed";
             backScoreOne.style.cursor = "not-allowed";
             backScoreTwo.style.cursor = "not-allowed";
@@ -163,7 +163,7 @@ const addPoint = player => {
             addScoreTwo.disabled = true;
             backScoreOne.disabled = true;
             backScoreTwo.disabled = true;
-            addScoreOne.style.cursor = "not-allowed";
+            addScoreOne.style.cursor = "not-allowed"; // *
             addScoreTwo.style.cursor = "not-allowed";
             backScoreOne.style.cursor = "not-allowed";
             backScoreTwo.style.cursor = "not-allowed";
@@ -175,7 +175,7 @@ const addPoint = player => {
             addScoreTwo.disabled = true;
             backScoreOne.disabled = true;
             backScoreTwo.disabled = true;
-            addScoreOne.style.cursor = "not-allowed";
+            addScoreOne.style.cursor = "not-allowed"; // *
             addScoreTwo.style.cursor = "not-allowed";
             backScoreOne.style.cursor = "not-allowed";
             backScoreTwo.style.cursor = "not-allowed";
@@ -187,7 +187,7 @@ const addPoint = player => {
             addScoreTwo.disabled = true;
             backScoreOne.disabled = true;
             backScoreTwo.disabled = true;
-            addScoreOne.style.cursor = "not-allowed";
+            addScoreOne.style.cursor = "not-allowed"; // *
             addScoreTwo.style.cursor = "not-allowed";
             backScoreOne.style.cursor = "not-allowed";
             backScoreTwo.style.cursor = "not-allowed";
@@ -243,6 +243,7 @@ const subtractPoint = player => {
     }
 
     // Change server.
+    // TODO fix server for subtracting points.
 
     let serverCheck = (playerOneScore + playerTwoScore - 2) % 2;
     if (player === "one" && playerOneScore !== 0) {
@@ -271,21 +272,35 @@ const subtractPoint = player => {
     }
 };
 
+// Getting form information.
+
 form.addEventListener("submit", e => {
+    // Preventing default action (reloading current page).
+
     e.preventDefault();
+
+    // Getting Player One and Two's names.
 
     const playerOneName = form.onename.value;
     const playerTwoName = form.twoname.value;
+
+    // Getting Player One and Two's colours and whatever server they chose.
 
     const playerOneColour = form.onecolour.value;
     const playerTwoColour = form.twocolour.value;
     const server = form.service.value;
 
+    // Making the form "invisible" and the game screen visible.
+
     startForm.style.visibility = "hidden";
     game.style.visibility = "visible";
 
+    // Getting inner HTML to add Player One and Player Two's names.
+
     oneName.innerHTML = playerOneName;
     twoName.innerHTML = playerTwoName;
+
+    // setting the server to whoever the user(s) chose.
 
     if (server === "playerone") {
         serverOne.innerHTML = "•";
@@ -294,14 +309,16 @@ form.addEventListener("submit", e => {
         serverTwo.innerHTML = "•";
     }
 
+    // Change the colour to whatever the user(s) chose.
+
     oneScore.style.color = playerOneColour;
     addScoreOne.style.background = playerOneColour;
     if (playerOneColour === "yellow" || playerOneColour === "cyan" || playerOneColour === "pink") {
-        addScoreOne.style.color = "black";
+        addScoreOne.style.color = "black"; // Changing text colour if background colour is too bright.*
     }
     twoScore.style.color = playerTwoColour;
     addScoreTwo.style.background = playerTwoColour;
     if (playerTwoColour === "yellow" || playerTwoColour === "cyan" || playerTwoColour === "pink") {
-        addScoreTwo.style.color = "black";
+        addScoreTwo.style.color = "black"; // *
     }
 });
