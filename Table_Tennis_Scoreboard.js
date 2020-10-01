@@ -29,6 +29,7 @@ tooltip.init();
 
 const form = document.querySelector(".setupform");
 const startForm = document.querySelector(".starter");
+const feedback = document.querySelector(".feedback");
 
 // Getting the game information.
 
@@ -280,20 +281,20 @@ form.addEventListener("submit", e => {
     const playerOneColour = form.onecolour.value;
     const playerTwoColour = form.twocolour.value;
     const server = form.service.value;
-
+    
     startForm.style.visibility = "hidden";
     game.style.visibility = "visible";
-
+    
     oneName.innerHTML = playerOneName;
     twoName.innerHTML = playerTwoName;
-
+    
     if (server === "playerone") {
         serverOne.innerHTML = "•";
     }
     else {
         serverTwo.innerHTML = "•";
     }
-
+    
     oneScore.style.color = playerOneColour;
     addScoreOne.style.background = playerOneColour;
     if (playerOneColour === "yellow" || playerOneColour === "cyan" || playerOneColour === "pink") {
