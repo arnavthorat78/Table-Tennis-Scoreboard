@@ -29,7 +29,8 @@ tooltip.init();
 
 const form = document.querySelector(".setupform");
 const startForm = document.querySelector(".starter");
-const feedback = document.querySelector(".feedback");
+const feedbackOne = document.querySelector(".feedback-one");
+const feedbackTwo = document.querySelector(".feedback-two");
 
 // Getting the game information.
 
@@ -285,41 +286,62 @@ form.addEventListener("submit", e => {
     const playerOneName = form.onename.value;
     const playerTwoName = form.twoname.value;
 
-    // Getting Player One and Two's colours and whatever server they chose.
+    const playerPattern = /^[a-zA-Z0-9_][a-zA-Z0-9_ ]*[a-zA-Z0-9_]{1,7}$/;
+    let playerOnePassed = null;
+    let playerTwoPassed = null;
 
-    const playerOneColour = form.onecolour.value;
-    const playerTwoColour = form.twocolour.value;
-    const server = form.service.value;
-
-    // Making the form "invisible" and the game screen visible.
-
-    startForm.style.visibility = "hidden";
-    game.style.visibility = "visible";
-
-    // Getting inner HTML to add Player One and Player Two's names.
-
-    oneName.innerHTML = playerOneName;
-    twoName.innerHTML = playerTwoName;
-
-    // setting the server to whoever the user(s) chose.
-
-    if (server === "playerone") {
-        serverOne.innerHTML = "•";
+    if (playerPattern.test(playerOneName)) {
+        playerOnePassed = true;
     }
     else {
-        serverTwo.innerHTML = "•";
+        feedbackOne.textContent = "The username must be between 1 and 8 characters long and mustn't contain any symbols."
+        playerOnePassed = false;
+    }
+    if (playerPattern.test(playerTwoName)) {
+        playerTwoPassed = true;
+    }
+    else {
+        feedbackOne.textContent = "The username must be between 1 and 8 characters long and mustn't contain any symbols."
+        playerTwoPassed = false;
     }
 
-    // Change the colour to whatever the user(s) chose.
+    if (playerOnePassed && playerTwoPassed) {
+        // Getting Player One and Two's colours and whatever server they chose.
 
-    oneScore.style.color = playerOneColour;
-    addScoreOne.style.background = playerOneColour;
-    if (playerOneColour === "yellow" || playerOneColour === "cyan" || playerOneColour === "pink") {
-        addScoreOne.style.color = "black"; // Changing text colour if background colour is too bright.*
-    }
-    twoScore.style.color = playerTwoColour;
-    addScoreTwo.style.background = playerTwoColour;
-    if (playerTwoColour === "yellow" || playerTwoColour === "cyan" || playerTwoColour === "pink") {
-        addScoreTwo.style.color = "black"; // *
+        const playerOneColour = form.onecolour.value;
+        const playerTwoColour = form.twocolour.value;
+        const server = form.service.value;
+
+        // Making the form invisible and the game screen visible.
+
+        startForm.style.visibility = "hidden";
+        game.style.visibility = "visible";
+
+        // Getting inner HTML to add Player One and Player Two's names.
+
+        oneName.innerHTML = playerOneName;
+        twoName.innerHTML = playerTwoName;
+
+        // setting the server to whoever the user(s) chose.
+
+        if (server === "playerone") {
+            serverOne.innerHTML = "•";
+        }
+        else {
+            serverTwo.innerHTML = "•";
+        }
+
+        // Change the colour to whatever the user(s) chose.
+
+        oneScore.style.color = playerOneColour;
+        addScoreOne.style.background = playerOneColour;
+        if (playerOneColour === "yellow" || playerOneColour === "cyan" || playerOneColour === "pink") {
+            addScoreOne.style.color = "black"; // Changing text colour if background colour is too bright.*
+        }
+        twoScore.style.color = playerTwoColour;
+        addScoreTwo.style.background = playerTwoColour;
+        if (playerTwoColour === "yellow" || playerTwoColour === "cyan" || playerTwoColour === "pink") {
+            addScoreTwo.style.color = "black"; // *
+        }
     }
 });
