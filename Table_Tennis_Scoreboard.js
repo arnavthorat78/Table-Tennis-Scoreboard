@@ -56,6 +56,15 @@ let playerTwoScore = 0;
 let playerOneWins = 0;
 let playerTwoWins = 0;
 
+// Setting an event listener for if the window's width changes, because otherwise the text will look unaligned.
+
+window.addEventListener("resize", changeWidth = event => {
+    let w = window.innerWidth;
+    let midInt = w / 3;
+    let mid = String(midInt + "px");
+    game.style.left = mid;
+})
+
 // Defining addPoint(), responsible for adding the point.
 
 const addPoint = player => {
@@ -286,7 +295,7 @@ form.addEventListener("submit", e => {
     const playerOneName = form.onename.value;
     const playerTwoName = form.twoname.value;
 
-    const playerPattern = /^[A-Za-z0-9/[$-/:-?{-~!"^_`\[\]/]{1,8}$/;
+    const playerPattern = /^[A-Za-z0-9/[$-/:-?{-~!"^_`\[\]/]{1,10}$/;
     let playerOnePassed = null;
     let playerTwoPassed = null;
 
@@ -294,14 +303,14 @@ form.addEventListener("submit", e => {
         playerOnePassed = true;
     }
     else {
-        feedbackOne.textContent = "The name(s) must be between 1 and 8 characters long and mustn't contain any symbols or spaces."
+        feedbackOne.innerHTML = "<span>The name(s) must be between 1 and 8 characters long and mustn't contain any spaces.</span><br><i>Hint: If you have spaces, replace them with a dash (-) instead!</i>";
         playerOnePassed = false;
     }
     if (playerPattern.test(playerTwoName)) {
         playerTwoPassed = true;
     }
     else {
-        feedbackOne.textContent = "The name(s) must be between 1 and 8 characters long and mustn't contain any spaces."
+        feedbackOne.innerHTML = "<span>The name(s) must be between 1 and 8 characters long and mustn't contain any spaces.</span><br><i>Hint: If you have spaces, replace them with a dash (-) instead!</i>";
         playerTwoPassed = false;
     }
 
@@ -312,9 +321,15 @@ form.addEventListener("submit", e => {
         const playerTwoColour = form.twocolour.value;
         const server = form.service.value;
 
-        // Making the form invisible and the game screen visible.
+        // Making the form invisible and the game screen visible, plus checking the width of the window.
 
         startForm.style.visibility = "hidden";
+
+        let w = window.innerWidth;
+        let midInt = w / 3;
+        let mid = String(midInt + "px");
+        game.style.left = mid;
+
         game.style.visibility = "visible";
 
         // Getting inner HTML to add Player One and Player Two's names.
