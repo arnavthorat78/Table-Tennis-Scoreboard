@@ -286,7 +286,7 @@ form.addEventListener("submit", e => {
     const playerOneName = form.onename.value;
     const playerTwoName = form.twoname.value;
 
-    const playerPattern = /^[a-zA-Z0-9_][a-zA-Z0-9_ ]*[a-zA-Z0-9_]{1,7}$/;
+    const playerPattern = /^[A-Za-z0-9/[$-/:-?{-~!"^_`\[\]/]{1,8}$/;
     let playerOnePassed = null;
     let playerTwoPassed = null;
 
@@ -294,14 +294,14 @@ form.addEventListener("submit", e => {
         playerOnePassed = true;
     }
     else {
-        feedbackOne.textContent = "The username must be between 1 and 8 characters long and mustn't contain any symbols."
+        feedbackOne.textContent = "The name(s) must be between 1 and 8 characters long and mustn't contain any symbols or spaces."
         playerOnePassed = false;
     }
     if (playerPattern.test(playerTwoName)) {
         playerTwoPassed = true;
     }
     else {
-        feedbackOne.textContent = "The username must be between 1 and 8 characters long and mustn't contain any symbols."
+        feedbackOne.textContent = "The name(s) must be between 1 and 8 characters long and mustn't contain any spaces."
         playerTwoPassed = false;
     }
 
