@@ -63,7 +63,7 @@ window.addEventListener("resize", changeWidth = event => {
     let midInt = w / 3;
     let mid = String(midInt + "px");
     game.style.left = mid;
-})
+});
 
 // Defining addPoint(), responsible for adding the point.
 
@@ -281,6 +281,19 @@ const subtractPoint = player => {
         }
     }
 };
+
+// Listening to key presses for adding points.
+
+window.addEventListener('keydown', playerAndAdd = e => {
+    const key = e.key;
+
+    if (key == 1) {
+        addPoint("one");
+    }
+    else if (key == 2) {
+        addPoint("two");
+    }
+});
 
 // Getting form information.
 
