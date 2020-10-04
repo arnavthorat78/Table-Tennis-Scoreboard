@@ -254,9 +254,8 @@ const subtractPoint = player => {
     }
 
     // Change server.
-    // TODO fix server for subtracting points.
 
-    let serverCheck = (playerOneScore + playerTwoScore - 2) % 2;
+    let serverCheck = (playerOneScore + playerTwoScore - 1) % 2;
     if (player === "one" && playerOneScore !== 0) {
         if (serverCheck === 0) {
             if (serverOne.innerHTML === "•") {
