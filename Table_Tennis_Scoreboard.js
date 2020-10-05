@@ -282,19 +282,6 @@ const subtractPoint = player => {
     }
 };
 
-// Listening to key presses for adding points.
-
-window.addEventListener('keydown', playerAndAdd = e => {
-    const key = e.key;
-
-    if (key == 1) {
-        addPoint("one");
-    }
-    else if (key == 2) {
-        addPoint("two");
-    }
-});
-
 // Getting form information.
 
 form.addEventListener("submit", e => {
@@ -370,5 +357,18 @@ form.addEventListener("submit", e => {
         if (playerTwoColour === "yellow" || playerTwoColour === "cyan" || playerTwoColour === "pink") {
             addScoreTwo.style.color = "black"; // *
         }
+
+        // Listening to key presses for adding points.
+
+        window.addEventListener('keydown', playerAndAdd = e => {
+            const key = e.key;
+
+            if (key == 1) {
+                addPoint("one");
+            }
+            else if (key == 2) {
+                addPoint("two");
+            }
+        });
     }
 });
