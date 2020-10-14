@@ -302,14 +302,14 @@ form.addEventListener("submit", e => {
         playerOnePassed = true;
     }
     else {
-        feedbackOne.innerHTML = "<span>The name(s) must be between 1 and 8 characters long and mustn't contain any spaces.</span><br><i>Hint: If you have spaces, replace them with a dash (-) instead!</i>";
+        feedbackOne.innerHTML = "<span>The name(s) must be between 1 and 10 characters long and mustn't contain any spaces.</span><br><i>Hint: If you have spaces, replace them with a dash (-) instead!</i>";
         playerOnePassed = false;
     }
     if (playerPattern.test(playerTwoName)) {
         playerTwoPassed = true;
     }
     else {
-        feedbackOne.innerHTML = "<span>The name(s) must be between 1 and 8 characters long and mustn't contain any spaces.</span><br><i>Hint: If you have spaces, replace them with a dash (-) instead!</i>";
+        feedbackOne.innerHTML = "<span>The name(s) must be between 1 and 10 characters long and mustn't contain any spaces.</span><br><i>Hint: If you have spaces, replace them with a dash (-) instead!</i>";
         playerTwoPassed = false;
     }
 
