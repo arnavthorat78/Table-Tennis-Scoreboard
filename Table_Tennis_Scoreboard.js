@@ -1,3 +1,10 @@
+/*
+    Copyright © Arnav Thorat 2020. All rights reserved.
+
+    DO NOT DELETE THIS COMMENT.
+    DO NOT SEND THIS FILE AND PUT YOUR TITLE AS THE CREATOR.
+*/
+
 // Tooltip.
 
 class Tooltip {
